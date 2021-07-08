@@ -6,3 +6,36 @@
     <h1 class="display-4">University Careers Application</h1>
     <p>One stop location to find new University Job</p>
 </div>
+
+
+@if (true)
+{
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="6000">
+        <ol class="carousel-indicators">
+            @{
+                for (int i = 0; i < 20; i++)
+                {
+                    <li data-target="#carouselExampleIndicators" data-slide-to="@(i.ToString())" @(i == 1 ? "class='active'" : "")></li>
+                }
+            }
+        </ol>
+        <div class="carousel-inner">
+            @{
+                for (int i = 1; i <= 3; i++)
+                {
+                    <div class="carousel-@(i == 1 ? "item active" : "item")">
+                        <img class="d-block w-100" src="@Url.Content("~/Media/Images/carousel"+i+".jpg")"alt="title">
+                    </div>
+                }
+            }
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+ }

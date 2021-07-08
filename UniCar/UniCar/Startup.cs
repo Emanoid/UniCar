@@ -43,6 +43,7 @@ namespace UniCar
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                app.UseStaticFiles();
             }
             else
             {

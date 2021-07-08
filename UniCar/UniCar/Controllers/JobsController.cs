@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using UniCar.Data;
 using UniCar.Models;
@@ -13,7 +15,7 @@ namespace UniCar.Controllers
     public class JobsController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        private const String connectionString = "Server=.;Database=aspnet-UniCar-00997AFE-7DF2-46B6-9C57-A73E7F9E755D;Trusted_Connection=True;MultipleActiveResultSets=true";
         public JobsController(ApplicationDbContext context)
         {
             _context = context;
@@ -22,6 +24,14 @@ namespace UniCar.Controllers
         // GET: Jobs
         public async Task<IActionResult> Index()
         {
+
+            var sql = @"SELECT [Id],[Name] FROM dbo.Application";
+
+            using (var connection = new SqlConnection(connectionString)) {
+                var applications = await connection.QueryAsync<Application>(sql);
+               // return Ok(applications);
+            }
+
             return View(await _context.Job.ToListAsync());
         }
 
