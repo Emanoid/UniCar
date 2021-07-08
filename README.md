@@ -57,7 +57,7 @@ University Career Web Application
 
 *Security
 
-
+Currently using Local Database, Plan to eventually switch to this database:
 Database Details:
 Your account number is: 529205
 Your new database is now ready to use.
